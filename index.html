@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal de Cobranca</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="brand-backdrop"></div>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand-panel card">
+          <img src="./assets/fbf-logo-azul.png" alt="FBF Embalagens" class="brand-logo" />
+          <p class="eyebrow">FBF Embalagens</p>
+          <h1>Portal de titulos</h1>
+          <p class="sidebar-copy">
+            Cobranca com visual institucional, carteira segmentada por vendedor e atualizacao diaria centralizada.
+          </p>
+        </div>
+
+        <section id="loginPanel" class="card">
+          <h2 class="section-title">Entrar</h2>
+          <form id="loginForm" class="stack">
+            <div class="field">
+              <label for="usernameInput">Usuario</label>
+              <input id="usernameInput" name="username" autocomplete="username" required />
+            </div>
+            <div class="field">
+              <label for="passwordInput">Senha</label>
+              <input id="passwordInput" name="password" type="password" autocomplete="current-password" required />
+            </div>
+            <button class="primary-button" type="submit">Acessar painel</button>
+            <p id="loginMessage" class="muted"></p>
+          </form>
+        </section>
+
+        <section id="sessionPanel" class="card hidden">
+          <h2 class="section-title">Sessao</h2>
+          <p id="sessionInfo" class="muted"></p>
+          <p id="baseDateLabel" class="muted"></p>
+          <button id="logoutButton" class="ghost-button" type="button">Sair</button>
+        </section>
+
+        <section id="filtersPanel" class="card hidden">
+          <h2 class="section-title">Filtros</h2>
+          <div class="stack">
+            <div class="field">
+              <label for="sellerSelect">Carteira</label>
+              <select id="sellerSelect"></select>
+            </div>
+            <div class="field">
+              <label for="searchInput">Buscar cliente</label>
+              <input id="searchInput" type="search" placeholder="Nome ou codigo" />
+            </div>
+            <div class="field">
+              <label for="statusFilter">Situacao</label>
+              <select id="statusFilter">
+                <option value="todos">Todos</option>
+                <option value="vencidos">Com vencidos</option>
+                <option value="a_vencer">So a vencer</option>
+                <option value="alta">Prioridade alta</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="progressFilter">Andamento</label>
+              <select id="progressFilter">
+                <option value="todos">Todos</option>
+                <option value="pendente">Pendente</option>
+                <option value="em_contato">Em contato</option>
+                <option value="promessa">Promessa</option>
+                <option value="pago">Pago</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section id="financePanel" class="card hidden">
+          <h2 class="section-title">Atualizacao diaria</h2>
+          <p class="muted">
+            Selecione os PDFs do dia. O sistema aceita 4 arquivos no novo padrao unificado ou 8 no padrao antigo.
+          </p>
+          <form id="uploadForm" class="stack">
+            <input id="pdfInput" type="file" accept=".pdf" multiple />
+            <button class="primary-button" type="submit">Atualizar base</button>
+          </form>
+          <p id="uploadMessage" class="muted"></p>
+        </section>
+      </aside>
+
+      <main class="content">
+        <header class="hero card">
+          <div>
+            <p class="eyebrow">Visao operacional</p>
+            <h2 id="welcomeTitle">Entre para carregar a carteira</h2>
+            <p id="welcomeText" class="hero-copy">O painel mostra resumo por vendedor, clientes, titulos e andamento da cobranca.</p>
+          </div>
+          <div class="hero-actions">
+            <button id="exportButton" class="ghost-button hidden" type="button">Exportar cobranca</button>
+          </div>
+          <img src="./assets/fbf-logo-branco.png" alt="" class="hero-watermark" />
+        </header>
+
+        <section id="summaryCards" class="summary-grid"></section>
+        <section id="clientList" class="client-list"></section>
+      </main>
+    </div>
+
+    <template id="clientCardTemplate">
+      <article class="client-card card">
+        <div class="client-header">
+          <div>
+            <div class="client-title-row">
+              <h3 class="client-name"></h3>
+              <span class="priority-pill"></span>
+            </div>
+            <p class="client-meta"></p>
+          </div>
+          <div class="client-actions">
+            <select class="progress-select">
+              <option value="pendente">Pendente</option>
+              <option value="em_contato">Em contato</option>
+              <option value="promessa">Promessa</option>
+              <option value="pago">Pago</option>
+            </select>
+            <button class="copy-button" type="button">Copiar cobranca</button>
+          </div>
+        </div>
+
+        <div class="totals-row"></div>
+
+        <details>
+          <summary>Ver titulos e anotacoes</summary>
+          <div class="detail-body">
+            <div class="titles-table-wrapper">
+              <table class="titles-table">
+                <thead>
+                  <tr>
+                    <th>Categoria</th>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                    <th>Vencimento</th>
+                    <th>Atraso</th>
+                    <th>Titulo</th>
+                    <th>Boleto</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <label class="note-field">
+              <span>Anotacao da cobranca</span>
+              <textarea rows="3" placeholder="Ex.: cliente pediu retorno amanha as 14h"></textarea>
+              <small class="note-status muted">Sem alteracoes</small>
+            </label>
+          </div>
+        </details>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>

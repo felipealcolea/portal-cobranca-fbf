@@ -1,0 +1,36 @@
+[
+  {
+    "username": "financeiro",
+    "password": "Snow@0806",
+    "nome": "Financeiro",
+    "role": "financeiro"
+  },
+  {
+    "username": "evinho",
+    "password": "FBF@2026",
+    "nome": "Evinho",
+    "role": "vendedor",
+    "vendedor": "Evinho"
+  },
+  {
+    "username": "felipe",
+    "password": "Snow@0806",
+    "nome": "Felipe",
+    "role": "vendedor",
+    "vendedor": "Felipe"
+  },
+  {
+    "username": "rafael",
+    "password": "FBF@2026",
+    "nome": "Rafael",
+    "role": "vendedor",
+    "vendedor": "Rafael"
+  },
+  {
+    "username": "simone",
+    "password": "FBF@2026",
+    "nome": "Simone",
+    "role": "vendedor",
+    "vendedor": "Simone"
+  }
+]
