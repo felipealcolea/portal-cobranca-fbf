@@ -10,8 +10,12 @@ const DATA_PATH = path.join(ROOT, "data", "titulos.json");
 const PROGRESS_PATH = path.join(ROOT, "data", "progress.json");
 const CURRENT_UPLOAD_DIR = path.join(ROOT, "storage", "current-pdfs");
 const STAGING_UPLOAD_DIR = path.join(ROOT, "storage", "incoming-pdfs");
-const PYTHON_EXE = "C:\\Users\\felip\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe";
+const PYTHON_EXE = process.env.PYTHON_PATH
+  || (process.platform === "win32"
+    ? "C:\\Users\\felip\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+    : "python3");
 const EXTRACT_SCRIPT = path.join(ROOT, "scripts", "extract_pdfs.py");
+const PORT = Number(process.env.PORT || 3000);
 
 const sessions = new Map();
 
@@ -41,8 +45,8 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(3000, () => {
-  console.log("Portal disponivel em http://localhost:3000");
+server.listen(PORT, () => {
+  console.log(`Portal disponivel na porta ${PORT}`);
 });
 
 async function handleApi(req, res, url) {

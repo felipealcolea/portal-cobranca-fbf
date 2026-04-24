@@ -1,0 +1,8 @@
+storage/current-pdfs/*
+storage/incoming-pdfs/*
+!storage/.gitkeep
+
+data/titulos-unified.json
+data/titulos-legacy.json
+
+*.log

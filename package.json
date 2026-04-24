@@ -1,0 +1,13 @@
+{
+  "name": "portal-cobranca-fbf",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portal de cobranca FBF com login, upload diario de PDFs e acompanhamento por vendedor.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
